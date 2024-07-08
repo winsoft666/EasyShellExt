@@ -1,0 +1,106 @@
+HKCR
+{
+	ForceRemove ShellExtension.EasyShellExt.1 = s 'EasyShellExt Class'
+	{
+		CLSID = s '{B0D35103-86A1-471C-A653-E130E3439A3B}'
+	}
+	ForceRemove ShellExtension.EasyShellExt = s 'EasyShellExt Class'
+	{
+		CLSID = s '{B0D35103-86A1-471C-A653-E130E3439A3B}'
+		CurVer = s 'ShellExtension.EasyShellExt.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B0D35103-86A1-471C-A653-E130E3439A3B} = s 'EasyShellExt Class'
+		{
+			ProgID = s 'ShellExtension.EasyShellExt.1'
+			VersionIndependentProgID = s 'ShellExtension.EasyShellExt'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{EB26EA8E-3B98-4DED-AE59-255C3BA725C3}'
+		}
+	}
+	NoRemove *
+	{
+		NoRemove shellex
+		{
+			NoRemove ContextMenuHandlers
+			{
+				ForceRemove EasyShellExt = s '{B0D35103-86A1-471C-A653-E130E3439A3B}'
+			}
+		}
+	}
+
+	NoRemove Directory
+	{
+		NoRemove shellex
+		{
+			NoRemove ContextMenuHandlers
+			{
+				ForceRemove EasyShellExt = s '{B0D35103-86A1-471C-A653-E130E3439A3B}'
+			}
+		}
+	}
+
+	NoRemove Directory
+	{
+		NoRemove Background
+		{
+			NoRemove shellex
+			{
+				NoRemove ContextMenuHandlers
+				{
+					ForceRemove EasyShellExt = s '{B0D35103-86A1-471C-A653-E130E3439A3B}'
+				}
+			}
+		}
+	}
+
+	NoRemove Folder
+	{
+		NoRemove shellex
+		{
+			NoRemove ContextMenuHandlers
+			{
+				ForceRemove EasyShellExt = s '{B0D35103-86A1-471C-A653-E130E3439A3B}'
+			}
+		}
+	}
+
+	NoRemove Drive
+	{
+		NoRemove shellex
+		{
+			NoRemove ContextMenuHandlers
+			{
+				ForceRemove EasyShellExt = s '{B0D35103-86A1-471C-A653-E130E3439A3B}'
+			}
+		}
+	}
+}
+
+HKLM
+{
+	NoRemove Software
+	{
+		NoRemove Microsoft
+		{
+			NoRemove Windows
+			{
+				NoRemove CurrentVersion
+				{
+					NoRemove 'Shell Extensions'
+					{
+						NoRemove Approved
+						{
+							ForceRemove val {B0D35103-86A1-471C-A653-E130E3439A3B} = s 'EasyShellExt Class'
+						}
+					}
+				}
+			}
+		}
+	}
+}
