@@ -168,13 +168,25 @@ bool RegisterHelper::RegisterContextMenuHandler(const wchar_t* fileType, const w
 // false = Unregister the context menu handler.
 bool RegisterHelper::RegisterContextMenuHandler(bool isRegister, const wchar_t* shellExtName) {
     int res = 0;
-    // The context menu handler is associated with the classes.
+
+    // 所有文件的右键菜单
     res += RegisterContextMenuHandler(L"*", shellExtName, isRegister);
+
+    // 目录的右键菜单
     res += RegisterContextMenuHandler(L"Directory", shellExtName, isRegister);
+
+    // 驱动器的右键菜单
     res += RegisterContextMenuHandler(L"Drive", shellExtName, isRegister);
+
+    // 文件夹（包含我的电脑、回收站等）的右键菜单
     res += RegisterContextMenuHandler(L"Folder", shellExtName, isRegister);
+
+    // 
     res += RegisterContextMenuHandler(L"Directory\\Background", shellExtName, isRegister);
+
+    // 桌面背景的右键菜单
     res += RegisterContextMenuHandler(L"DesktopBackground", shellExtName, isRegister);
+
     res += RegisterContextMenuHandler(L"LibraryFolder", shellExtName, isRegister);
     res += RegisterContextMenuHandler(L"LibraryFolder\\Background", shellExtName, isRegister);
     return res > 0;
